@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Naaptol</title>
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div class="top-nav">    <!---Main div-->
+		<div class="social">
+			<span>Stay connected</span>
+			<a class="a1" href=""><i class="fab fa-facebook-f"></i></a>
+			<a class="a1" href=""><i class="fab fa-twitter"></i></a>
+			<a class="a1" href=""><i class="fab fa-linkedin"></i></a>
+		</div>
+							
+		<div class="listing">
+			<ul>
+				<li>Mon-Sat: 7:00 - 18:00</li>
+				<li>Sunday: Closed</li>
+				<li>Emergency: 24hr / 7days</li>
+			</ul>
+		</div>
+	</div>
+	            
+	<header>           <!--header wrapper-->
+		<div class="center-nav">
+			<div class="logo">
+				<a href=""><h2>Construction<br> & Renovation</h2></a>
+			</div>
+
+			<div class="logo-action">
+				<div class="logo-action-element">
+					<div class="icon">
+						<a class="a2" href=""><i class="far fa-envelope-open"></i></a>
+					</div>
+					<div>
+						<p>WANT AN APPROXIMATE PRICE?</p>
+						<h3>GET A FREE QUOTE</h3>
+					</div>
+				</div>
+
+				<div class="logo-action-element">
+					<div class="icon">
+						<a class="a2" href=""><i class="fas fa-phone"></i></a>
+					</div>
+					<div>
+						<p>CALL US NOW</p>
+						<h3>715 387 5006</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+													<!----Menu Bar-->
+		<div class="bottom-nav">
+			<div class="menu">
+				<ul class="menu-list">
+					<a href=""><li>Home</li></a>
+					<a href=""><li>Services</li></a>
+					<a href=""><li>Projects</li></a>
+					<a href=""><li>About</li></a>
+					<a href=""><li>Login</li>
+					<a href=""><li>Sign Up</li></a>
+					<a href=""><li>Contacts</li></a>
+				</ul>
+			</div>
+			<div class="menu-icons">
+				<a href=""><i class="fas fa-shopping-bag"></i></a>
+				<a href=""><i class="fas fa-search"></i></a>
+			</div>
+		</div>
+	</header>
+
+	<main>    <!----image inside content-->
+		<div class="hero-content">
+			<h1>YES, I'm Master!<br> and I'm ready to help you.</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat.</p>
+			<button><span>Contact me if you dare!</span></button>
+		</div>
+	</main>
+
+	<section>     <!---four section-->
+		<div class="wrapper">
+			<div class="wrapper-child">
+				<div class="wrapper-circle">
+					<a class="aa" href=""><i class="fas fa-plug"></i></a>
+				</div>
+				<h3>Electricity</h3>
+				<ul>
+					<li>Extensions & Loft</li>
+					<li>Refurbishment projects</li>
+					<li>Electrical design</li>
+				</ul>
+			</div>
+			<div class="wrapper-child">
+				<div class="wrapper-circle">
+					<a class="aa" href=""><i class="fas fa-brush"></i></a>
+				</div>
+				<h3>Painting</h3>
+				<ul>
+					<li>Extensions & Loft</li>
+					<li>Refurbishment projects</li>
+					<li>Electrical design</li>
+				</ul>
+			</div>
+			<div class="wrapper-child">
+				<div class="wrapper-circle">
+					<a class="aa" href=""><i class="fas fa-th-large"></i></a>
+				</div>
+				<h3>Flooring</h3>
+				<ul>
+					<li>Extensions & Loft</li>
+					<li>Refurbishment projects</li>
+					<li>Electrical design</li>
+				</ul>
+			</div>
+			<div class="wrapper-child">
+				<div class="wrapper-circle">
+					<a class="aa" href=""><i class="fas fa-shower"></i></a>
+				</div>
+				<h3>Plumbing</h3>
+				<ul>
+					<li>Extensions & Loft</li>
+					<li>Refurbishment projects</li>
+					<li>Electrical design</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+</body>
+<script type="text/javascript">
+	/**
+	 * Font Awesome CDN Setup Webfont
+	 * 
+	 * This will load Font Awesome from the Font Awesome Free or Pro CDN.
+	 */
+	if (! function_exists('fa_custom_setup_cdn_webfont') ) {
+	  function fa_custom_setup_cdn_webfont($cdn_url = '', $integrity = null) {
+	    $matches = [];
+	    $match_result = preg_match('|/([^/]+?)\.css$|', $cdn_url, $matches);
+	    $resource_handle_uniqueness = ($match_result === 1) ? $matches[1] : md5($cdn_url);
+	    $resource_handle = "font-awesome-cdn-webfont-$resource_handle_uniqueness";
+
+	    foreach ( [ 'wp_enqueue_scripts', 'admin_enqueue_scripts', 'login_enqueue_scripts' ] as $action ) {
+	      add_action($action, function () use ( $cdn_url, $resource_handle ) {
+	          wp_enqueue_style( $resource_handle, $cdn_url, [], null );
+	        }
+	      );
+	    }
+
+	    if($integrity) {
+	      add_filter(
+	        'style_loader_tag',
+	        function( $html, $handle ) use ( $resource_handle, $integrity ) {
+	          if ( in_array( $handle, [ $resource_handle ], true ) ) {
+	            return preg_replace(
+	              '/\/>$/',
+	              'integrity="' . $integrity .
+	              '" crossorigin="anonymous" />',
+	              $html,
+	              1
+	            );
+	          } else {
+	            return $html;
+	          }
+	        },
+	        10,
+	        2
+	      );
+	    }
+	  }
+	}
+</script>
+</html>
